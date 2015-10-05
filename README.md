@@ -192,42 +192,59 @@ List of functions called by '!'
 commands
 List of bot commands initiated by bot name 'hal' 
 
-abstract		#returns short abstract about a subject
+abstract
+returns short abstract about a subject
 
-carlton		#dancing carltons
+carlton
+dancing carltons
 
-catfacts		#random catfacts
+catfacts
+random catfacts
 
-chucknorris	#random Chuck Norris awesomeness
+chucknorris
+random Chuck Norris awesomeness
 
-meme		#returns random or specific meme
+meme
+returns random or specific meme
 
-sexysaxman	#link to sexysaxman site
+sexysaxman
+link to sexysaxman site
 
-thanks_obama	#returns thanks obama meme
+thanks_obama
+returns thanks obama meme
 
-wiki		#search wiki for summary, list of articles, links, references
+wiki
+search wiki for summary, list of articles, links, references
 
-zombie		#random zombies
+zombie
+random zombies
 
-!playernews	#recent news on a nhl player
+!playernews
+recent news on a nhl player
 
-!playerstats	#current season stats on nhl player
+!playerstats
+current season stats on nhl player
 
-!statyear	#stats for a specific season for nhl player
+!statyear
+stats for a specific season for nhl player
 
-!weather		#current weather, forecast, and 10day
+!weather
+current weather, forecast, and 10day
 
-!yt		#youtube vide or list of yt video's
+!yt
+youtube vide or list of yt video's
 
 
 ####Plugins that need configured
 
-canary		#lets you know your bot has started, you will need to add a valid channelID
+canary
+lets you know your bot has started, you will need to add a valid channelID
 
-comics		#pulls a few comics into a channel, you will need to add a valid channelID
+comics
+pulls a few comics into a channel, you will need to add a valid channelID
 
-google		#does google search, you will need to use your own search_engine_id and API key. see plugin for links to instructions on setting it up
+google
+does google search, you will need to use your own search_engine_id and API key. see plugin for links to instructions on setting it up
 
 
 
