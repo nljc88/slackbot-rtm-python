@@ -1,0 +1,8 @@
+requests
+python-daemon
+pyyaml
+websocket-client
+slackclient
+beautifulsoup4
+google-api-python-client
+wikipedia
