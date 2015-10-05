@@ -56,24 +56,24 @@ I did this on a MAC, so some of the instructions pertain to OSX users.
 	$ heroku create
 	- You will need to alter the .gitignore file, for when you push to heroku it will ignore some critical files
 	
-	$ cat .gitignore
+	$cat .gitignore
 	- pico or vim and remove the ignored files you want to push
 	- It will most likely ignore the Procfile, rtmbot.conf files, and plugin/ folders
 	- delete these from the .gitignore file, maybe add .DS_Store
 	
 	You may need to add the files previously ignored
-	- git add Procfile
-	- git add rtmbot.conf
-	- git commit -m "<insert your notes>"
+	- $ git add Procfile
+	- $ git add rtmbot.conf
+	- $ git commit -m "<insert your notes>"
 
 	another common issue is that the Procfile should not have an extension. if it does, create a new one. It only needs to have the following in it:
 	- worker: python rtmbot.py
 	
 	Push worker to heroku
-	- git push heroku master
+	- $ git push heroku master
 
 	Turn on the worker
-	- heroku ps:scale worker=1
+	- $ heroku ps:scale worker=1
 
 6. Additional Heroku commands to know
 	
