@@ -15,7 +15,7 @@ I did this on a MAC, so some of the instructions pertain to OSX users.
 
 1. Download the slackbot-rtm-python code
 
-        git clone # to be set
+        git clone https://github.com/nkleck/slackbot-rtm-python.git
         cd slackbot-rtm-python
 
 2. Setup Heroku Account and install its Dependencies
@@ -56,7 +56,7 @@ I did this on a MAC, so some of the instructions pertain to OSX users.
 	$ heroku create
 	- You will need to alter the .gitignore file, for when you push to heroku it will ignore some critical files
 	
-	$cat .gitignore
+	$ cat .gitignore
 	- pico or vim and remove the ignored files you want to push
 	- It will most likely ignore the Procfile, rtmbot.conf files, and plugin/ folders
 	- delete these from the .gitignore file, maybe add .DS_Store
