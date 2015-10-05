@@ -183,11 +183,14 @@ Current Plugins
 
 try !help or 'hal commands' for syntax needed for each plugin
 
-!data		#returns json passed to worker back to a channel
+!data
+\n#returns json passed to worker back to a channel
 
-!help		#list of functions called by '!'
+!help
+\n#list of functions called by '!'
 
-commands		#list of bot commands initiated by bot name 'hal' 
+commands
+\n#list of bot commands initiated by bot name 'hal' 
 
 abstract		#returns short abstract about a subject
 
