@@ -43,7 +43,7 @@ I did this on a MAC, so some of the instructions pertain to OSX users.
 	
 	Install worker dependencies
 	- $ pip install -r requirements.txt
-	- *Note*: Anytime you add a plugin that uses a library not currently installed, you will need to add that library to the requirements.txt
+*Note*: Anytime you add a plugin that uses a library not currently installed, you will need to add that library to the requirements.txt
 	
 4. Configure rtmbot (https://api.slack.com/bot-users). Create your bot in slack, insert its slack token into the rtmbot.conf file
         
