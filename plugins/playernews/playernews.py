@@ -1,6 +1,7 @@
 import sys
 from bs4 import BeautifulSoup
 import requests
+import argparse
 import time
 
 crontable = []
@@ -11,12 +12,12 @@ outputs = []
 # create format for playername to append to url
 def player_name(arguments):
 	player_name_string = ""
-	if len(arguments) == 2:
-		player_name_string = arguments[1]
+	if len(arguments) == 1:
+		player_name_string = arguments[0]
 		return player_name_string
 	else:
-		name_a = arguments[1]
-		name_b = arguments[2]
+		name_a = arguments[0]
+		name_b = arguments[1]
 		if name_a[len(name_a)-1] == ",":
 			player_name_string = name_a + "%20" + name_b
 		else:
@@ -46,11 +47,12 @@ def find_news(arg3):
 def process_message(data):
     channel = data["channel"]
     text = data["text"]
-    if '!playernews' in text:
+    string = text.lower()
+    alist = string.split(' ')
+    if alist[0] == '!playernews' or alist[0] =='playernews':
     	time.sleep(1)
-    	string = str(text)
-    	args = string.split(" ")
-    	player_name_string = player_name(args)
+    	del alist[0]
+    	player_name_string = player_name(alist)
     	refined_url = build_url(player_name_string)
     	results = get_data(refined_url)
     	if '<h3>Search Results for:' in results:

@@ -1,6 +1,7 @@
 import sys
 from bs4 import BeautifulSoup
 import requests
+import argparse
 import time
 import itertools
 import collections
@@ -71,12 +72,11 @@ def find_statsyear(arg3):
 def process_message(data):
     channel = data["channel"]
     text = data["text"]
-    if '!statyear' in text:
+    string = text.lower()
+    alist = string.split(' ')
+    if alist[0] == '!statyear' or alist[0] == 'statyear':
     	time.sleep(1)
-    	string = str(text)
-    	alist = string.split(" ")
-    	call = alist.index('!statyear')
-    	del alist[call]
+    	del alist[0]
     	var1 = playername_statsyear(alist)
     	player_name_string = var1[0]
     	year = var1[1]
