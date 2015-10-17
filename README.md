@@ -218,6 +218,9 @@ comics
 google
 - does google search, you will need to use your own search_engine_id and API key. see plugin for links to instructions on setting it up
 
+untappd
+- requires you to sign up for api access. then insert your client_id and client_secret
+
 
 
 

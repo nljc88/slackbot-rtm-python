@@ -6,6 +6,7 @@ crontable = []
 outputs = []
 
 title = 'Here is a list of my programmed functions:'
+beer = 'or type "beer commands" for a list of my beer commands'
 end = 'cheers!'
 
 command_list = [
@@ -34,4 +35,4 @@ def process_message(data):
 	if alist[0] == 'hal' and alist[1] == 'commands':
 		time.sleep(1)
 		string = '\n'.join(command_list)
-		outputs.append([channel, "%s \n\n%s \n\n%s" % (title, string, end)])
+		outputs.append([channel, "%s \n\n%s\n\n%s\n\n%s" % (title, string, beer,end)])
