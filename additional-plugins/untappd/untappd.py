@@ -1,5 +1,6 @@
 
 import sys, time, requests, json
+from geopy.geocoders import Nominatim
 
 client_id = ''
 client_secret = ''
@@ -177,6 +178,46 @@ def get_beer_info_from_json(arg):
 	beer_info_string = "Name: %s\nStyle: %s\nABV: %s\nIBU: %s\nRating: %s\nBrewery: %s\n%s" %(beer_name,beer_style,beer_abv,beer_ibu,beer_rating,brewer,beer_description)
 	return beer_info_string
 
+def get_local_geocodes(arg):
+	location_arg = ' '.join(arg)
+	geolocator = Nominatim()
+	location = geolocator.geocode(location_arg)
+	try:
+		lat = location.latitude
+		lng = location.longitude
+		return lat, lng
+	except AttributeError:
+		return 'error1'
+
+def build_the_pub_search_get_json(arg1, arg2):
+	base_url = 'https://api.untappd.com/v4/thepub/local?client_id=%s&client_secret=%s&lat=%s&lng=%s&radius=5'
+	refined_url = base_url % (client_id, client_secret, arg1, arg2)
+	response = requests.get(refined_url)
+	json_data = json.loads(response.content)
+	return json_data
+
+def get_venue_info_from_json(arg):
+	venue_name_list = []
+	venue_address_list = []
+	venue_city_list = []
+	venue_state_list = []
+	for d in arg['response']['checkins']['items']:
+		venue_name_list.append(d['venue']['venue_name'].encode('utf-8'))
+		venue_address_list.append(d['venue']['location']['venue_address'].encode('utf-8'))
+		venue_city_list.append(d['venue']['location']['venue_city'].encode('utf-8'))
+		venue_state_list.append(d['venue']['location']['venue_state'].encode('utf-8'))
+	length3 = len(venue_name_list)
+	venue_search_list = []
+	for x in range(0,length3):
+		a = venue_name_list[x]
+		b = venue_address_list[x]
+		c = venue_city_list[x]
+		d = venue_state_list[x]
+		venue_string_vals = "%s\n%s, %s, %s\n" %(a,b,c,d)
+		venue_search_list.append(venue_string_vals)
+	no_dups_venue_list = set(venue_search_list)
+	venue_search_string = '\n'.join(no_dups_venue_list)
+	return venue_search_string
 
 def process_message(data):
 	channel = data["channel"]
@@ -274,6 +315,17 @@ def process_message(data):
 			brewery_name = brewery_list[0]
 			brewery_beers = brewery_list[1]
 			outputs.append([channel,"%s\n\nBeer List (Top 15):\n%s" %(brewery_name,brewery_beers)])
+	elif alist[0] == 'local' and alist[1] == 'search':
+		alist = alist[2:]
+		geocode = get_local_geocodes(alist)
+		if geocode == 'error1':
+			outputs.append([channel, 'try another address, that one did not work'])
+		else:
+			lat = geocode[0]
+			lng = geocode[1]
+			json_data = build_the_pub_search_get_json(lat,lng)
+			venue_info = get_venue_info_from_json(json_data)
+			outputs.append([channel, venue_info])
 
 
 

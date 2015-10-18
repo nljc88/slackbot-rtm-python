@@ -13,6 +13,7 @@ command_list = [
   'brewery search <brewery name>',
   'brewery info <brewery name>',
   'brewery beerlist <brewery name>',
+  'local search <address>'
  ]
 
 def process_message(data):
