@@ -1,5 +1,7 @@
 
-import sys, random, time, re
+import random
+import time
+import re
 
 crontable = []
 outputs = []
@@ -14,17 +16,21 @@ zombie_list = [
   "https://i.chzbgr.com/maxW500/5299680512/h5120FD0B/"
   ]
 
+
 def get_zombie():
-	x = random.randint(0,6)
-	zombie = zombie_list[x]
-	return zombie
+    x = random.randint(0, 6)
+    zombie = zombie_list[x]
+    return zombie
 
 
 def process_message(data):
-	channel = data["channel"]
-	text = data["text"]
-	string = text.lower()
-	if re.search('zombi(es|e)', text):
-		time.sleep(1)
-		zombie = get_zombie()
-		outputs.append([channel, zombie])
+    channel = data["channel"]
+    text = data["text"]
+
+    zreg = re.compile('zombie(s)?(\s|$)')
+    match = zreg.search(text)
+
+    if match:
+        time.sleep(1)
+        zombie = get_zombie()
+        outputs.append([channel, zombie])

@@ -1,5 +1,6 @@
 
-import sys, random, time
+import random
+import time
 
 crontable = []
 outputs = []
@@ -12,17 +13,19 @@ carltons = [
   "http://gifsoup.com/webroot/animatedgifs/131815_o.gif"
 ]
 
+
 def get_carlton():
-	x = random.randint(0,4)
-	carlton = carltons[x]
-	return carlton
+    x = random.randint(0, 4)
+    carlton = carltons[x]
+    return carlton
+
 
 def process_message(data):
-	channel = data["channel"]
-	text = data["text"]
-	string = text.lower()
-	alist = string.split(' ')
-	if alist[0] == 'hal' and alist[1] == 'carlton':
-		time.sleep(1)
-		carlton = get_carlton()
-		outputs.append([channel, carlton])
+    channel = data["channel"]
+    text = data["text"]
+    string = text.lower()
+    alist = string.split(' ')
+    if alist[0] == 'hal' and alist[1] == 'carlton':
+        time.sleep(1)
+        carlton = get_carlton()
+        outputs.append([channel, carlton])

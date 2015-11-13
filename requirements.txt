@@ -6,3 +6,8 @@ slackclient
 beautifulsoup4
 google-api-python-client
 wikipedia
+geopy
+xmltodict
+pythonwhois
+dnspython
+geoip2
